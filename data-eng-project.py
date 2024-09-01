@@ -24,14 +24,14 @@ EVENTS_URL = "https://api.github.com/repos/statsbomb/open-data/contents/data/eve
 # Initialize defaultdict for offensive metrics
 offensive_metrics = defaultdict(
     lambda: {
+        "name": None,
         "goals": 0,
         "assists": 0,
         "shots": 0,
         "shots_on_target": 0,
         "dribbles_completed": 0,
         "key_passes": 0,
-        "crosses": 0,
-        "name": None,
+        "crosses": 0,  
     }
 )
 
