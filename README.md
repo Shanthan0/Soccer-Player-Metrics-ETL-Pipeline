@@ -2,25 +2,6 @@
 
 This script is designed to process soccer [event](https://github.com/statsbomb/open-data/tree/master/data/events) data, extract player offensive metrics, and store the results in a PostgreSQL database. The data engineering process ensures that data flows smoothly from raw sources to structured tables while maintaining data integrity and handling errors effectively.
 
-## Prerequisites for the Project
-
-Before setting up and running this project, ensure that you have the following prerequisites in place:
-
-1. **Required Python Packages**
-   - Install the required Python packages:
-     ```bash
-     pip install -r requirements.txt
-     ```
-
-2. **PostgreSQL Database**
-   - Ensure that you have a PostgreSQL server running locally or accessible remotely.
-
-3. **GitHub Personal Access Token**
-   - Generate a GitHub personal access token with the necessary permissions to read the repository's content.
-
-4. **Environment Variables**
-   - Update the `data-eng-project.env` file to store sensitive information such as your GitHub token and database connection details.
-
 ## Full Refresh Approach
 
 I opted for a full refresh approach instead of an incremental update because the data needs to be computed by combining all the files. This ensures that the derived metrics are accurate and consistent, reflecting the complete dataset rather than just recent changes.
