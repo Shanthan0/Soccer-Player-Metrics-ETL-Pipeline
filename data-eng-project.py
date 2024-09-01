@@ -1,6 +1,7 @@
 import os
 from collections import defaultdict
 from sqlite3 import Cursor
+from typing import Dict, List
 
 import pandas as pd
 import psycopg2
@@ -31,12 +32,12 @@ offensive_metrics = defaultdict(
         "shots_on_target": 0,
         "dribbles_completed": 0,
         "key_passes": 0,
-        "crosses": 0,  
+        "crosses": 0,
     }
 )
 
 
-def fetch_event_files(url, headers):
+def fetch_event_files(url: str, headers: Dict[str, str]):
     """Fetch the list of event files from the GitHub repository."""
     response = requests.get(url, headers=headers)
     response.raise_for_status()
@@ -87,12 +88,12 @@ def process_event_data(file_data):
             continue
 
 
-def drop_table(cursor, table_name):
+def drop_table(cursor: Cursor, table_name: str):
     """Drop the table if it exists."""
     cursor.execute(f"DROP TABLE IF EXISTS {table_name}")
 
 
-def create_table(cursor, table_name, columns):
+def create_table(cursor: Cursor, table_name: str, columns: List[str]):
     """Create a table in the PostgreSQL database if it doesn't already exist."""
     sql = f"CREATE TABLE IF NOT EXISTS {table_name} ("
     for col in columns:
@@ -101,20 +102,20 @@ def create_table(cursor, table_name, columns):
     cursor.execute(sql)
 
 
-def insert_into_prod_table(cursor: Cursor, staging_table, prod_table):
+def insert_into_prod_table(cursor: Cursor, staging_table: str, prod_table: str):
     """Insert data from the staging table into the production table with type casting."""
     insert_sql = f"""
     INSERT INTO {prod_table}
     SELECT
         player_id,
+        name,
         goals::int,
         assists::int,
         shots::int,
         shots_on_target::int,
         dribbles_completed::int,
         key_passes::int,
-        crosses::int,
-        name
+        crosses::int
     FROM {staging_table}"""
     cursor.execute(insert_sql)
 
