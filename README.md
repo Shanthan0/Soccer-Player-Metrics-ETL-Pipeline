@@ -1,6 +1,6 @@
 # Overview of the Process
 
-This script is designed to process soccer event data, extract player offensive metrics, and store the results in a PostgreSQL database. The data engineering process ensures that data flows smoothly from raw sources to structured tables while maintaining data integrity and handling errors effectively.
+This script is designed to process soccer [event](https://github.com/statsbomb/open-data/tree/master/data/events) data, extract player offensive metrics, and store the results in a PostgreSQL database. The data engineering process ensures that data flows smoothly from raw sources to structured tables while maintaining data integrity and handling errors effectively.
 
 ## Prerequisites for the Project
 
