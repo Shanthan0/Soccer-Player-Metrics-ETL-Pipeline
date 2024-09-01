@@ -76,3 +76,7 @@ Once data has been staged, it is ready to be moved into the production table whe
 ### 5. Finalization
 
 The database connection is closed in a `finally` block to ensure resources are freed regardless of whether the process succeeds or fails.
+
+Here is a sample data from the database
+<img width="1433" alt="image" src="https://github.com/user-attachments/assets/b56c8c01-8ca1-4361-8c6e-499afb152215">
+
